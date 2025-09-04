@@ -18,50 +18,43 @@ const ServicesSection = () => {
           Our <span className="text-yellow-400">Services</span>
         </h2>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        {/* Grid for sm and above */}
+        <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {services.map((service, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 cursor-pointer"
-            >
-              <div className="relative h-48 sm:h-56 w-full">
-                <Image
-                  src={service.img}
-                  alt={service.title}
-                  fill
-                  className="object-cover object-center"
-                />
-              </div>
-              <div className="p-4 sm:p-6 text-center">
-                <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">{service.title}</h3>
-                <p className="text-gray-600 text-sm sm:text-base">{service.desc}</p>
-              </div>
-            </div>
+            <ServiceCard key={index} service={service} />
           ))}
         </div>
 
-        {/* Optional: Horizontal scroll for small screens */}
+        {/* Horizontal scroll for mobile */}
         <div className="sm:hidden mt-6 overflow-x-auto flex gap-4">
           {services.map((service, index) => (
-            <div key={index} className="min-w-[250px] bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-              <div className="relative h-48 w-full">
-                <Image
-                  src={service.img}
-                  alt={service.title}
-                  fill
-                  className="object-cover object-center"
-                />
-              </div>
-              <div className="p-4 text-center">
-                <h3 className="text-lg font-semibold mb-1">{service.title}</h3>
-                <p className="text-gray-600 text-sm">{service.desc}</p>
-              </div>
+            <div key={index} className="min-w-[250px]">
+              <ServiceCard service={service} />
             </div>
           ))}
         </div>
       </div>
     </section>
+  );
+};
+
+// Reusable Service Card
+const ServiceCard = ({ service }) => {
+  return (
+    <div className="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 cursor-pointer">
+      <div className="relative h-48 sm:h-56 w-full">
+        <Image
+          src={service.img}
+          alt={service.title}
+          fill
+          className="object-cover object-center"
+        />
+      </div>
+      <div className="p-4 sm:p-6 text-center">
+        <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">{service.title}</h3>
+        <p className="text-gray-600 text-sm sm:text-base">{service.desc}</p>
+      </div>
+    </div>
   );
 };
 
