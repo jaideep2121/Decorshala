@@ -4,6 +4,7 @@ import ServicesSection from "./Component/Service";
 import ReviewSection from "./Component/ReviewSection";
 import ContactForm from "./Component/Contact";
 import Footer from "./Component/Footer";
+import Practise from "./Component/Practise";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
     <ReviewSection></ReviewSection>
     <ContactForm></ContactForm>
    <Footer></Footer>
+   
    </div>
   );
 }
